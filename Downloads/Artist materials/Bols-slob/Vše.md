@@ -1,9 +1,4 @@
-Videa:
-[[https://drive.google.com/drive/folders/1TAKztPTcAsAPYvKPyCA7L_8jK2SynZJh?usp=sharing]{.underline}](https://drive.google.com/drive/folders/1TAKztPTcAsAPYvKPyCA7L_8jK2SynZJh?usp=sharing)
-
-Bio:
- BoLs/sLoB is a producer, songwritter and a DJ. His authentic mix of cloud rap, glitch, ethereal EDM, and experimental electronic music makes sLoB one of the most talented up-and-coming artists from the Czech Republic. His release, 'Esoteric Garden,' has been featured on the Berlin-based Soul Feeder label. BoLs/sLoB has already played in venues around Czech Republic, Slovakia, Germany, England, Slovenia, Brussels and Netherlands.
-
+BoLs/sLoB is a producer, songwritter and a DJ. His authentic mix of cloud rap, glitch, ethereal EDM, and experimental electronic music makes sLoB one of the most talented up-and-coming artists from the Czech Republic. His release, 'Esoteric Garden,' has been featured on the Berlin-based Soul Feeder label. BoLs/sLoB has already played in venues around Czech Republic, Slovakia, Germany, England, Slovenia, Brussels and Netherlands.
 
 AV add. - His AV performance created in collaboration with visual artists Matyáš Baierle and Oliver Sobotka is a blend of high-octane bangers and atmospheric tracks, seamlessly mixed before your eyes with flashy visuals!
 
