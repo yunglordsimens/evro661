@@ -1,10 +1,10 @@
 // Artist data for евро661 — May 8-9, 2026
 //
-// img / vid point to post-rename paths under Downloads/Artist materials/{slug}/
-// When you set up the Vite project, move these to public/artists/{slug}/ and
-// update the paths to /artists/{slug}/photo.jpg
+// Names follow the Downloads/Artist materials/ folder names (source of truth).
+// img / vid point to post-rename paths — run rename-artists.sh first.
+// When you set up Vite, move files to public/artists/{slug}/ and update paths to /artists/{slug}/...
 //
-// MISSING: keiko-sei — no folder in Downloads yet
+// ⚠️  MISSING: keiko-sei — no folder in Downloads yet
 
 export const artists = [
 
@@ -14,18 +14,18 @@ export const artists = [
     id: 1,
     block: 1,
     type: 'artist',
-    slug: 'goinman',                // folder was: Coinman46
-    name: 'GOINMAN',
+    slug: 'coinman46',             // folder: Coinman46 (was wrong as GOINMAN in JSX)
+    name: 'COINMAN46',
     bio: 'Мрачный бит, ломаные ритмы.',
-    img: 'Downloads/Artist materials/goinman/photo.png',
-    vid: 'Downloads/Artist materials/goinman/video.mp4',
+    img: 'Downloads/Artist materials/coinman46/photo.png',
+    vid: 'Downloads/Artist materials/coinman46/video.mp4',
   },
   {
     id: 2,
     block: 1,
     type: 'artist',
     slug: 'dj-godbless-b2b-dj-bubble-wuffle',
-    name: 'DJ GODBLESS X DJ BUBBLE WUFFLE',
+    name: 'DJ GODBLESS B2B DJ BUBBLE WUFFLE', // folder uses b2b, not X
     bio: 'B2B сет, который уничтожит танцпол.',
     img: 'Downloads/Artist materials/dj-godbless-b2b-dj-bubble-wuffle/photo.png',
     vid: 'Downloads/Artist materials/dj-godbless-b2b-dj-bubble-wuffle/video.mov',
@@ -68,7 +68,7 @@ export const artists = [
     name: 'SPIRAL SADNESS',
     bio: 'Меланхолия и дисторшн.',
     img: 'Downloads/Artist materials/spiral-sadness/photo.jpg',
-    vid: null,                      // no video in folder
+    vid: null,
   },
   {
     id: 7,
@@ -78,7 +78,7 @@ export const artists = [
     name: 'SEILOR MOON',
     bio: 'Рейв энергия.',
     img: 'Downloads/Artist materials/seilor-moon/photo.jpg',
-    vid: null,                      // no video in folder
+    vid: null,
   },
   {
     id: 8,
@@ -130,8 +130,8 @@ export const artists = [
     slug: 'bols-slob',
     name: 'BOLS/SLOB',
     bio: 'Грязный саунд.',
-    img: null,                      // no photo yet
-    vid: null,                      // no video yet
+    img: null,
+    vid: null,
   },
   {
     id: 13,
@@ -151,7 +151,7 @@ export const artists = [
     name: 'CRC',
     bio: 'Электро.',
     img: 'Downloads/Artist materials/crc/photo.jpg',
-    vid: null,                      // no video yet
+    vid: null,
   },
   {
     id: 15,
@@ -160,7 +160,7 @@ export const artists = [
     slug: 'eizola',
     name: 'EIZOLA',
     bio: 'Техно.',
-    img: null,                      // no photo — only videos
+    img: null,
     vid: 'Downloads/Artist materials/eizola/video-vertical.mov',
   },
   {
@@ -200,11 +200,11 @@ export const artists = [
     id: 19,
     block: 3,
     type: 'artist',
-    slug: 'lilatesla',
-    name: 'LILATESLA',
+    slug: 'lila-tesla',           // folder: Lila tesla (was squashed as LILATESLA in JSX)
+    name: 'LILA TESLA',
     bio: 'Шум.',
-    img: null,                      // no photo in folder
-    vid: null,                      // no video in folder
+    img: null,
+    vid: null,
   },
   {
     id: 20,
@@ -214,7 +214,7 @@ export const artists = [
     name: 'NEUE WELT',
     bio: 'EBM.',
     img: 'Downloads/Artist materials/neue-welt/photo.jpg',
-    vid: null,                      // no video yet
+    vid: null,
   },
   {
     id: 21,
@@ -230,11 +230,11 @@ export const artists = [
     id: 22,
     block: 3,
     type: 'artist',
-    slug: 'plandona-pearl',         // folder was: Plandora Pearl
-    name: 'PLANDONA PEARL',
+    slug: 'plandora-pearl',       // folder: Plandora Pearl (was typo Plandona in JSX)
+    name: 'PLANDORA PEARL',
     bio: 'Брейкбит.',
-    img: 'Downloads/Artist materials/plandona-pearl/photo.jpg',
-    vid: 'Downloads/Artist materials/plandona-pearl/video.mov',
+    img: 'Downloads/Artist materials/plandora-pearl/photo.jpg',
+    vid: 'Downloads/Artist materials/plandora-pearl/video.mov',
   },
   {
     id: 23,
