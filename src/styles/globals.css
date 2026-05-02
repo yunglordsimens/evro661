@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #000000;
+  }
+  *::-webkit-scrollbar { width: 4px; }
+  *::-webkit-scrollbar-track { background: #000; }
+  *::-webkit-scrollbar-thumb { background: #fff; border-radius: 2px; }
+
+  ::selection { background: #fff; color: #000; }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: #000;
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .font-grunge { font-family: 'Rock Salt', cursive; }
+
+  .paper-strip {
+    filter: drop-shadow(3px 4px 0px rgba(0,0,0,0.9));
+  }
+  .torn-edges {
+    filter: url(#torn-edges-filter);
+  }
+}
