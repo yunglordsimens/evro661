@@ -30,15 +30,15 @@ rename_folder "Autocannibal"                      "autocannibal"
 rename_folder "Bols-slob"                         "bols-slob"
 rename_folder "CRC"                               "crc"
 rename_folder "Chloe Landau"                      "chloe-landau"
-rename_folder "Coinman46"                         "goinman"
+rename_folder "Coinman46"                         "coinman46"
 rename_folder "DJ SCHEUSAAL"                      "dj-scheusaal"
 rename_folder "DJ godbless b2b DJ bubble wuffle"  "dj-godbless-b2b-dj-bubble-wuffle"
 rename_folder "Eizola "                           "eizola"
 rename_folder "Eternity Again"                    "eternity-again"
-rename_folder "Lila tesla"                        "lilatesla"
+rename_folder "Lila tesla"                          "lila-tesla"
 rename_folder "Neue Welt"                         "neue-welt"
 rename_folder "Passive progressive "              "passive-progressive"
-rename_folder "Plandora Pearl"                    "plandona-pearl"
+rename_folder "Plandora Pearl"                     "plandora-pearl"
 rename_folder "Rewounded"                         "rewounded"
 rename_folder "Seilor moon"                       "seilor-moon"
 rename_folder "Spiral sadness"                    "spiral-sadness"
@@ -71,9 +71,9 @@ rename_file "chloe-landau" "2026_UKR_MARCH_ANYA_ALYA_LORIASHVILI_01.jpg"        
 rename_file "chloe-landau" "ScreenRecording_04-24-2026 00-14-14_1.mov"           "video.mov"
 
 # goinman  (folder was Coinman46)
-rename_file "goinman" "cccc.png"                                                 "photo.png"
-rename_file "goinman" "Screenshot 2026-04-26 at 12.33.06.png"                   "photo-2.png"
-rename_file "goinman" "promo.mp4"                                                "video.mp4"
+rename_file "coinman46" "cccc.png"                                                 "photo.png"
+rename_file "coinman46" "Screenshot 2026-04-26 at 12.33.06.png"                   "photo-2.png"
+rename_file "coinman46" "promo.mp4"                                                "video.mp4"
 
 # dj-scheusaal
 rename_file "dj-scheusaal" "PHOTO-2026-04-25-16-02-52.jpg"                      "photo.jpg"
@@ -93,7 +93,7 @@ rename_file "eternity-again" "IMG_8679.jpeg"                                    
 rename_file "eternity-again" "video-output-8A7F0281-8216-4FAC-9734-5D843361F2E4-1.mov" "video.mov"
 
 # lilatesla
-rename_file "lilatesla" "Vše je zde.md"                                          "bio.md"
+rename_file "lila-tesla" "Vše je zde.md"                                          "bio.md"
 
 # neue-welt
 rename_file "neue-welt" "nw-32.jpg"                                              "photo.jpg"
@@ -104,9 +104,9 @@ rename_file "passive-progressive" "IMG_6058.JPG"                                
 rename_file "passive-progressive" "pp video.mp4"                                 "video.mp4"
 
 # plandona-pearl  (folder was Plandora Pearl)
-rename_file "plandona-pearl" "6C62D8D2-A303-42B6-9899-8749DD8734A6.jpg"         "photo.jpg"
-rename_file "plandona-pearl" "7af76d2d027a40e58cebea9fa21337f5.mov"             "video.mov"
-rename_file "plandona-pearl" "Bio.md"                                            "bio.md"
+rename_file "plandora-pearl" "6C62D8D2-A303-42B6-9899-8749DD8734A6.jpg"         "photo.jpg"
+rename_file "plandora-pearl" "7af76d2d027a40e58cebea9fa21337f5.mov"             "video.mov"
+rename_file "plandora-pearl" "Bio.md"                                            "bio.md"
 
 # rewounded
 rename_file "rewounded" "rewounded.jpg"                                          "photo.jpg"
