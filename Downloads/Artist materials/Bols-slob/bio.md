@@ -11,26 +11,3 @@ Esoteric Garden, serving up eccentric electronics mixed with an exceptional sens
 After BoLs/sLoB confirmed themselves as one of the rising young talents in the European avant-pop scene, they are releasing their highly anticipated debut album Esoteric Garden under the Soul Feeder label. – Full Moon Magazine – Jakub Koumar
 
 Sound design with a melancholic, mutant trap atmosphere, neo-romantic trance, and post-club suite. The songs placed side by side form a standalone narrative that moves into a larger phase. – Avyss Magazine - https://avyss-magazine.com/2023/05/30/43835/
-
-CRC
-
-Constantly falling
-
-Evro
-
-Join in the destruction. Join \@evro_661.
-
-Researchers in the Institute of unfinished studies states that 8 of 10.
-
-DJ SCHEUSAAL
-
-DJ Scheusal is a Firearms Dealer and DJ from Vienna, Austria, he loves
-exploring underground music scenes all across europe and has been
-hosting various mixed genre events in vienna. Expect the unexpected.
-
-EIZOLA
-
-Eizola's ambient compositions are inspired by dusty weather transmitters
-and life in pits occupied by little critters called želetaminky. Samples
-made of field recordings, slowly shifting layers, fading rhythm, and the
-vibrations of overheating perma-soil.
