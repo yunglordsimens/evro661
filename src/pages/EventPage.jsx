@@ -42,7 +42,7 @@ export default function EventPage() {
       {/* Game overlay */}
       {gameActive && (
         <div className="fixed inset-0 z-50">
-          <GameCanvas />
+          <GameCanvas onClose={toggleGame} />
         </div>
       )}
 
