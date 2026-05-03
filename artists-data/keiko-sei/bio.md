@@ -1,1 +1,1 @@
-
+Keiko Sei is a musical project by Daniel Rajmon and Tamara Spalajković. Their sound blends guitar loops and fractured harmonies of bedroom pop with introspective lyrics and flashes of euphoria. The band takes their name from the Japanese media theorist, whom they’ve never met but whose book “Final Landscape” left a mark on both. On favu label they recently released their second album “Her Car”. Conceived to be listened to during solitary walks - with headphones on, while kicking piles of leaves or else, “Her Car” drives you anywhere you want, just CALL - 777. 
