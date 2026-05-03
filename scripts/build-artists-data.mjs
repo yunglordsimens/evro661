@@ -40,9 +40,23 @@ async function scanSlug(slug) {
     // folder missing — all null
   }
 
-  const bioPath = join(DATA_DIR, slug, 'bio.md');
-  if (existsSync(bioPath)) {
-    bio = (await readFile(bioPath, 'utf8')).trim();
+  // Multi-language bios: bio.uk.md, bio.en.md, bio.cz.md → { uk, en, cz }
+  // Fallback to single bio.md if no per-language files exist
+  const langs = ['uk', 'en', 'cz'];
+  const bioByLang = {};
+  for (const lang of langs) {
+    const p = join(DATA_DIR, slug, `bio.${lang}.md`);
+    if (existsSync(p)) {
+      bioByLang[lang] = (await readFile(p, 'utf8')).trim();
+    }
+  }
+  if (Object.keys(bioByLang).length > 0) {
+    bio = bioByLang;
+  } else {
+    const bioPath = join(DATA_DIR, slug, 'bio.md');
+    if (existsSync(bioPath)) {
+      bio = (await readFile(bioPath, 'utf8')).trim();
+    }
   }
 
   return {

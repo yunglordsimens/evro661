@@ -180,21 +180,18 @@
 
         .lang-switch {
             display: flex;
-            gap: 10px;
-            font-size: 0.9rem;
+            gap: 7px;
+            font-size: 0.72rem;
             letter-spacing: 2px;
             font-weight: 500;
         }
-        
         .lang-switch span {
             cursor: pointer;
-            opacity: 0.5;
+            opacity: 0.35;
             transition: opacity 0.3s;
         }
-        
-        .lang-switch span:hover, .lang-switch span.active {
-            opacity: 1;
-        }
+        .lang-switch span:hover, .lang-switch span.active { opacity: 1; }
+        .lang-switch span[style*="opacity: 0.3"] { cursor: default; opacity: 0.2 !important; }
 
         .hero-center {
             position: absolute;
@@ -216,6 +213,38 @@
             text-shadow: 0 5px 25px rgba(0,0,0,0.9);
             word-wrap: break-word;
         }
+
+        .block-divider {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 28px 0 14px;
+            position: relative;
+        }
+        .block-arrow {
+            background: rgba(8,6,4,0.65);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.75);
+            padding: 10px 22px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-radius: 2px;
+            transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.25s;
+            backdrop-filter: blur(6px);
+        }
+        .block-arrow:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(8,6,4,0.85);
+            transform: translateY(2px);
+        }
+        .block-arrow .arrow-icon { font-size: 1rem; line-height: 1; }
 
         .scroll-indicator {
             position: absolute;
@@ -767,22 +796,31 @@
             text-align: center;
             transition: transform 0.5s ease-out, color 0.5s;
         }
-        /* FUNDRAISER / UKRAINE — long word, tight fit */
+        /* FUNDRAISER / UKRAINE — match React proportions on small poster */
         .donate-block-1 span,
         .donate-block-3 span {
             color: #fff;
-            font-size: clamp(1.5rem, 8.5vw, 1.95rem);
-            letter-spacing: -0.01em;
+            font-size: clamp(1.7rem, 9.5vw, 2.4rem);
+            letter-spacing: -0.005em;
         }
+        .donate-block-3 span { letter-spacing: 0.08em; }
         /* FOR — short word, much bigger */
         .donate-block-2 span {
             color: #000;
-            font-size: clamp(2.8rem, 14vw, 3.6rem);
+            font-size: clamp(3.3rem, 16vw, 4.4rem);
             letter-spacing: 0.02em;
         }
         #donate-poster:hover .donate-block-1 span,
-        #donate-poster:hover .donate-block-3 span { color: #fff; transform: scale(1.05); }
-        #donate-poster:hover .donate-block-2 span { color: #fff; transform: scale(1.08); }
+        #donate-poster:hover .donate-block-3 span {
+            color: #fff;
+            transform: scale(1.05);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        #donate-poster:hover .donate-block-2 span {
+            color: #fff;
+            transform: scale(1.10);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
         /* DONATE cta overlay */
         .donate-cta {
             position: absolute;
@@ -1112,20 +1150,15 @@
                                 <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
                             </svg>
                         </a>
-                        <a href="#" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud (добавь ссылку когда будет)">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.104.101.104.05 0 .09-.46.099-.104l.27-2.105-.27-2.154c0-.057-.045-.1-.099-.1m-.899.828c-.06 0-.091.037-.104.094L0 14.479l.165 1.308c0 .055.045.094.09.094s.089-.045.104-.104l.21-1.319-.21-1.235c0-.062-.045-.094-.09-.094m1.83-1.229c-.061 0-.12.045-.12.104l-.21 2.563.225 2.458c0 .06.045.12.119.12.061 0 .105-.061.121-.12l.254-2.474-.254-2.548c-.016-.06-.061-.12-.121-.12m.945-.089c-.075 0-.135.06-.15.135l-.193 2.64.21 2.544c.016.077.075.138.15.138.074 0 .135-.061.15-.15l.24-2.532-.24-2.642c0-.074-.061-.135-.135-.135l-.012.002zm1.155.36c-.005-.09-.075-.149-.159-.149-.09 0-.158.06-.164.149l-.217 2.43.2 2.563c0 .09.075.157.159.157.074 0 .148-.068.148-.158l.227-2.563-.227-2.444zm.809-1.709c-.101 0-.18.09-.18.181l-.21 3.957.187 2.563c0 .09.08.164.18.164.094 0 .174-.09.18-.18l.209-2.563-.209-3.972c-.007-.104-.088-.18-.18-.18m.959-.914c-.105 0-.195.09-.203.194l-.18 4.872.165 2.548c0 .12.09.209.195.209.104 0 .194-.089.21-.209l.193-2.548-.192-4.872c-.016-.12-.105-.194-.21-.194m.989-.449c-.121 0-.22.104-.226.225l-.165 5.275.165 2.52c0 .119.105.225.225.225.121 0 .211-.105.225-.225l.182-2.52-.18-5.275c0-.121-.105-.225-.225-.225m1.245.045c-.001-.135-.105-.24-.239-.24-.119 0-.24.105-.24.24l-.149 5.441.149 2.503c0 .135.105.24.24.24.119 0 .24-.105.24-.24l.164-2.503-.165-5.456zm.749-1.784c-.149 0-.27.119-.27.27l-.18 7.142.165 2.473c0 .15.119.271.27.271.149 0 .27-.121.285-.271l.18-2.473-.18-7.142c-.016-.149-.135-.27-.285-.27m1.005-.345c-.165 0-.299.135-.299.3l-.146 7.476.146 2.443c0 .166.134.301.3.301.165 0 .299-.135.299-.301l.18-2.443-.18-7.476c-.014-.165-.149-.3-.3-.3m1.214.39c-.181 0-.33.149-.33.329l-.135 7.057.135 2.413c0 .18.149.329.33.329s.329-.149.329-.329l.15-2.413-.15-7.057c0-.18-.149-.329-.329-.329m.93-2.067a.36.36 0 00-.36.36l-.165 9.124.165 2.398a.36.36 0 00.36.359c.196 0 .345-.164.359-.359l.18-2.398-.18-9.125c-.014-.193-.18-.359-.359-.359m1.23-.105c-.045-.029-.105-.045-.165-.045a.357.357 0 00-.21.06.39.39 0 00-.165.314l-.029.166-.121 8.954s0 .03.121 2.443v.029a.39.39 0 00.105.255c.061.06.149.105.255.105.09 0 .18-.045.24-.121.075-.061.119-.149.119-.255l.014-.241.135-2.203-.149-9.139a.387.387 0 00-.149-.314m11.16 7.11s-.51 0-.93.135c-.51-2.595-2.83-4.522-5.609-4.522-1.05 0-2.04.279-2.88.755-.314.18-.404.359-.404.629v9.244c0 .299.225.524.495.555h9.328c2.052-.045 3.694-1.71 3.694-3.793 0-2.117-1.711-3.793-3.793-3.793z"/>
-                            </svg>
-                        </a>
                     </div>
                     
                     <!-- Переключатель языка -->
                     <div class="lang-switch" id="door-lang">
-                        <span class="active">🇺🇦 UKR</span>
+                        <span class="active" data-lang="uk">🇺🇦 UKR</span>
                         <span style="opacity: 0.3;">|</span>
-                        <span>🇬🇧 ENG</span>
+                        <span data-lang="en">🇬🇧 ENG</span>
                         <span style="opacity: 0.3;">|</span>
-                        <span>🇨🇿 CZE</span>
+                        <span data-lang="cz">🇨🇿 CZE</span>
                     </div>
                 </div>
             </nav>
@@ -1203,11 +1236,11 @@
                 </span>
             </div>
             <div id="inner-lang">
-                <span class="active">🇺🇦 UKR</span>
+                <span class="active" data-lang="uk">🇺🇦 UKR</span>
                 <span class="sep">|</span>
-                <span>🇬🇧 ENG</span>
+                <span data-lang="en">🇬🇧 ENG</span>
                 <span class="sep">|</span>
-                <span>🇨🇿 CZE</span>
+                <span data-lang="cz">🇨🇿 CZE</span>
             </div>
         </nav>
 
@@ -1239,10 +1272,8 @@
             <button class="ctrl-btn" id="btn-sound" title="Toggle sound" aria-label="Toggle sound">🔇</button>
             <button class="ctrl-btn" id="btn-football" title="Football game" aria-label="Football game">⚽</button>
         </div>
-        <!-- Football game elements -->
+        <!-- Football game elements (no score, no game-over message) -->
         <canvas id="football-canvas"></canvas>
-        <div id="fb-game-score"><span id="fb-score-num">0</span></div>
-        <div id="fb-game-msg">WASTED!</div>
 
         <!-- LINEUP SECTION -->
         <section id="lineup-section">
@@ -1261,7 +1292,7 @@
             <!-- Date footer -->
             <div class="lineup-date">
                 <h2 class="font-grunge">8.5 — 9.5.2026</h2>
-                <p>Strahov / Praha</p>
+                <p>Strahov Stadium, Prague</p>
             </div>
         </section>
 
@@ -1277,7 +1308,7 @@
 
         <!-- Map section -->
         <div id="map-section">
-            <h3>Strahov / Praha</h3>
+            <h3>Strahov Stadium</h3>
             <div class="map-wrap" onclick="window.open('https://www.google.com/maps/place/Strahov+Stadium,+Prague', '_blank', 'noopener')" title="Open in Google Maps">
                 <iframe
                     src="https://maps.google.com/maps?q=50.0810,14.3897&z=15&output=embed"
@@ -1663,12 +1694,10 @@
         });
 
         // Обработчик для языков
-        document.querySelectorAll('.lang-switch span').forEach(el => {
-            el.addEventListener('click', (e) => {
-                if(e.target.textContent.includes('|')) return;
-                document.querySelectorAll('.lang-switch span').forEach(span => span.classList.remove('active'));
-                e.target.classList.add('active');
-                // Здесь можешь добавить логику перевода текста
+        document.querySelectorAll('#door-lang span[data-lang], #inner-lang span[data-lang]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (window.setLang) window.setLang(el.dataset.lang);
+                else el.classList.add('active');
             });
         });
 
@@ -1857,18 +1886,58 @@
         }
         syncLogoSources();
 
+        // ── Language state (UK default) ───────────────────────────────────────
+        let currentLang = 'uk';
+        function getBio(a) {
+            if (!a.bio) return '';
+            if (typeof a.bio === 'string') return a.bio;
+            return a.bio[currentLang] || a.bio.en || a.bio.uk || a.bio.cz || '';
+        }
+        function setLang(lang) {
+            currentLang = lang;
+            // Sync both lang switchers' active state
+            const sel = `[data-lang="${lang}"]`;
+            document.querySelectorAll('#door-lang span, #inner-lang span:not(.sep)').forEach(el => {
+                el.classList.toggle('active', el.dataset.lang === lang);
+            });
+            // Update strip-wrap dataset bios + any open panel
+            document.querySelectorAll('.strip-wrap').forEach(wrap => {
+                const id = +wrap.dataset.artistId;
+                const a = artists.find(x => x.id === id);
+                if (a) wrap.dataset.bio = getBio(a);
+            });
+            // If side panel is open, refresh its content
+            window.dispatchEvent(new CustomEvent('langchange'));
+        }
+        window.setLang = setLang;
+
         // ---- Сборка лайн-апа ----
         function buildLineup() {
             const col = document.getElementById('lineup-column');
             if (!col) return;
 
             const insertIllustrationAfter = 9; // после Block 1 (по аналогии с jsx-моком)
+            let prevBlock = null;
 
             artists.forEach((a, idx) => {
+                // Block divider (with arrow) before first artist of a new block (except block 1)
+                if (prevBlock !== null && a.block !== prevBlock) {
+                    const div = document.createElement('div');
+                    div.className = 'block-divider';
+                    div.dataset.targetBlock = a.block;
+                    div.innerHTML = `<button class="block-arrow" type="button" aria-label="Go to Block ${a.block}">
+                        <span class="arrow-label">Block ${a.block}</span>
+                        <span class="arrow-icon">↓</span>
+                    </button>`;
+                    col.appendChild(div);
+                }
+                prevBlock = a.block;
+
                 const wrap = document.createElement('div');
                 wrap.className = 'strip-wrap';
                 wrap.dataset.artistId = a.id;
-                wrap.dataset.bio = a.bio;
+                wrap.dataset.block = a.block;
+                wrap.dataset.bio = getBio(a);
                 // лёгкий случайный наклон, как у бумажек
                 const rot = (idx % 2 === 0 ? 1 : -1) * (0.5 + (a.id * 13 % 100) / 100 * 1.4);
                 const inner = document.createElement('div');
@@ -1903,6 +1972,11 @@
             return id ? artists.find(a => a.id === id) : null;
         }
 
+        // Re-render panels when language changes (so open bio swaps)
+        window.addEventListener('langchange', () => {
+            try { renderPanels(); } catch(_) {}
+        });
+
         function renderPanels() {
             const a = getActiveArtist();
             // active class на полоске
@@ -1921,11 +1995,12 @@
             const imgsHtml = (a.imgs || []).map((src, i) =>
                 `<img class="panel-img" src="${src}" alt="${a.name} photo ${i+1}" loading="lazy">`
             ).join('');
+            const bioText = getBio(a);
             leftPanel.innerHTML = `
                 ${imgsHtml || '<p class="panel-missing">фото скоро</p>'}
                 <div class="panel-text">
                     <strong>${a.name}</strong>
-                    ${a.bio ? a.bio.replace(/\n/g, '<br>') : ''}
+                    ${bioText ? bioText.replace(/\n/g, '<br>') : ''}
                 </div>
             `;
 
@@ -1935,7 +2010,7 @@
             `).join('');
             rightPanel.innerHTML = `
                 ${vidsHtml || '<p class="panel-missing">видео будут позже</p>'}
-                ${a.bio ? `<p class="panel-text">${a.bio.replace(/\n/g, '<br>')}</p>` : ''}
+                ${bioText ? `<p class="panel-text">${bioText.replace(/\n/g, '<br>')}</p>` : ''}
             `;
             // звук на ховер
             rightPanel.querySelectorAll('.panel-vid').forEach(v => {
@@ -2064,18 +2139,7 @@
             });
         }
 
-        // ── Inner lang switcher ───────────────────────────────────────────────
-        document.querySelectorAll('#inner-lang span:not(.sep)').forEach(el => {
-            el.addEventListener('click', () => {
-                document.querySelectorAll('#inner-lang span:not(.sep)').forEach(s => s.classList.remove('active'));
-                el.classList.add('active');
-                // sync door lang
-                const txt = el.textContent.trim();
-                document.querySelectorAll('#door-lang span').forEach(s => {
-                    s.classList.toggle('active', s.textContent.trim() === txt);
-                });
-            });
-        });
+        // ── Inner lang switcher: wired via setLang above ─────────────────────
 
         // ── Event-page show controls when inside ─────────────────────────────
         const origShowInside = () => {
@@ -2165,18 +2229,34 @@
             });
         })();
 
+        // ── Block-arrow scroll-to-block ───────────────────────────────────────
+        (function initBlockArrows() {
+            const col = document.getElementById('lineup-column');
+            if (!col) return;
+            col.addEventListener('click', (e) => {
+                const arrow = e.target.closest('.block-arrow');
+                if (!arrow) return;
+                const divider = arrow.closest('.block-divider');
+                if (!divider) return;
+                // Find the FIRST .strip-wrap of the target block (i.e. the one immediately after this divider)
+                const targetBlock = divider.dataset.targetBlock;
+                const firstStrip = divider.nextElementSibling;
+                if (!firstStrip) return;
+                // Scroll so the strip's top sits at the very top of the viewport
+                const y = firstStrip.getBoundingClientRect().top + window.scrollY - 8;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            });
+        })();
+
         // ── Football game ─────────────────────────────────────────────────────
         (function initFootballGame() {
             const canvas = document.getElementById('football-canvas');
-            const scoreEl = document.getElementById('fb-game-score');
-            const msgEl = document.getElementById('fb-game-msg');
             const btn = document.getElementById('btn-football');
             if (!canvas || !btn) return;
 
             const ctx = canvas.getContext('2d');
             let width, height, raf;
             let active = false;
-            let score = 0, isGameOver = false;
 
             const gravity = 0.5, friction = 0.98, wBounce = 0.8, fBounce = 0.5;
             const ball = { x:0, y:0, vx:0, vy:0, radius:45, rotation:0, angV:0 };
@@ -2239,17 +2319,6 @@
                 if (ball.y + ball.radius > height) {
                     ball.y = height - ball.radius;
                     ball.vy *= -fBounce; ball.vx *= 0.8; ball.angV *= 0.8;
-                    if (!isGameOver && score > 0) {
-                        isGameOver = true;
-                        msgEl.style.opacity = 1;
-                        document.body.style.transform = `translate(${(Math.random()-0.5)*14}px,${(Math.random()-0.5)*14}px)`;
-                        setTimeout(() => { document.body.style.transform = ''; }, 50);
-                        setTimeout(() => {
-                            msgEl.style.opacity = 0;
-                            score = 0; scoreEl.querySelector('#fb-score-num').textContent = score;
-                            isGameOver = false;
-                        }, 1500);
-                    }
                 }
 
                 for (let i = particles.length - 1; i >= 0; i--) {
@@ -2266,25 +2335,12 @@
             ballImg.onerror = () => { ballImgLoaded = false; };
             ballImg.src = 'ball.png';
 
-            function drawVectorBall() {
-                ctx.lineCap = 'square'; ctx.lineJoin = 'miter';
-                ctx.strokeStyle = '#ccc'; ctx.lineWidth = 3;
-                punkCircle(4, 4, ball.radius, 4);
-                ctx.strokeStyle = '#111'; ctx.lineWidth = 6;
-                punkCircle(0, 0, ball.radius, 3);
+            function drawFallbackBall() {
+                // Simple solid circle while ball.png loads or if it's missing
+                ctx.fillStyle = '#111';
                 ctx.beginPath();
-                for (let i = Math.PI * 0.25; i <= Math.PI * 1.75; i += 0.4) {
-                    const jx = Math.cos(i) * (ball.radius * 0.5) + (Math.random()-0.5)*3;
-                    const jy = Math.sin(i) * (ball.radius * 0.5) + (Math.random()-0.5)*3;
-                    i === Math.PI * 0.25 ? ctx.moveTo(jx + ball.radius*0.1, jy) : ctx.lineTo(jx + ball.radius*0.1, jy);
-                }
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.moveTo(-ball.radius*0.6, -ball.radius*0.1+(Math.random()-0.5)*2);
-                ctx.lineTo( ball.radius*0.2, -ball.radius*0.1+(Math.random()-0.5)*2);
-                ctx.moveTo(-ball.radius*0.6,  ball.radius*0.15+(Math.random()-0.5)*2);
-                ctx.lineTo( ball.radius*0.1,  ball.radius*0.15+(Math.random()-0.5)*2);
-                ctx.stroke();
+                ctx.arc(0, 0, ball.radius, 0, Math.PI * 2);
+                ctx.fill();
             }
 
             function draw() {
@@ -2296,7 +2352,7 @@
                     const r = ball.radius;
                     ctx.drawImage(ballImg, -r, -r, r * 2, r * 2);
                 } else {
-                    drawVectorBall();
+                    drawFallbackBall();
                 }
                 ctx.restore();
 
@@ -2321,9 +2377,6 @@
                 const dx = clientX - ball.x, dy = clientY - ball.y;
                 if (Math.sqrt(dx*dx + dy*dy) < ball.radius * 2.5) {
                     if (ev && ev.cancelable) ev.preventDefault();
-                    if (isGameOver) { isGameOver = false; score = 0; msgEl.style.opacity = 0; }
-                    score++;
-                    scoreEl.querySelector('#fb-score-num').textContent = score;
                     const nd = dx / ball.radius;
                     ball.vy = -14 - Math.random()*4;
                     ball.vx = -nd * 10 + (Math.random()-0.5)*4;
@@ -2337,9 +2390,7 @@
             function startGame() {
                 active = true;
                 canvas.classList.add('active');
-                scoreEl.classList.add('active');
-                resize(); initBall(); score = 0; isGameOver = false;
-                scoreEl.querySelector('#fb-score-num').textContent = 0;
+                resize(); initBall();
                 cancelAnimationFrame(raf);
                 gameLoop();
                 btn.textContent = '❌';
@@ -2348,7 +2399,6 @@
             function stopGame() {
                 active = false;
                 canvas.classList.remove('active');
-                scoreEl.classList.remove('active');
                 cancelAnimationFrame(raf);
                 btn.textContent = '⚽';
             }
