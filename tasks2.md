@@ -1,5 +1,5 @@
 ```markdown
-# Analysis & Task List for index-2.html
+# Analysis & Task List for index.html
 
 ## 1. Favicon
 **Problem:** No favicon is set; user wants to use `public/logo evro.png` as favicon.  
