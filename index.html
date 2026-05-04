@@ -214,37 +214,30 @@
             word-wrap: break-word;
         }
 
-        .block-divider {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 28px 0 14px;
-            position: relative;
+        /* ── Sticky GoOut Tickets button (door page) ── */
+        #goout-sticky {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            opacity: 1;
+            pointer-events: auto;
         }
-        .block-arrow {
-            background: rgba(8,6,4,0.65);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.75);
-            padding: 10px 22px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border-radius: 2px;
-            transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.25s;
-            backdrop-filter: blur(6px);
+        #goout-sticky.hidden {
+            opacity: 0;
+            transform: translateX(-50%) translateY(60px);
+            pointer-events: none;
         }
-        .block-arrow:hover {
-            color: #fff;
-            border-color: rgba(255,255,255,0.5);
-            background: rgba(8,6,4,0.85);
-            transform: translateY(2px);
+        #goout-sticky .paper-text {
+            font-size: 1.3rem;
+            padding: 12px 36px;
         }
-        .block-arrow .arrow-icon { font-size: 1rem; line-height: 1; }
+        @media (max-width: 640px) {
+            #goout-sticky { bottom: 22px; }
+            #goout-sticky .paper-text { font-size: 1rem; padding: 10px 26px; }
+        }
 
         .scroll-indicator {
             position: absolute;
@@ -1047,6 +1040,15 @@
             transition: opacity 0.3s;
         }
         #inner-lang span:hover, #inner-lang span.active { opacity: 1; }
+        #inner-lang span.disabled, .lang-switch span.disabled {
+            opacity: 0.18 !important;
+            cursor: not-allowed;
+            pointer-events: auto;
+            filter: grayscale(1);
+        }
+        #inner-lang span.disabled:hover, .lang-switch span.disabled:hover {
+            opacity: 0.18 !important;
+        }
         #inner-lang .sep { cursor: default; opacity: 0.2 !important; }
 
         /* ── FUNDRAISING BAR — inline in inner-nav, ~33% width ── */
@@ -1154,11 +1156,11 @@
                     
                     <!-- Переключатель языка -->
                     <div class="lang-switch" id="door-lang">
-                        <span class="active" data-lang="uk">🇺🇦 UKR</span>
+                        <span class="disabled" data-lang="uk" title="Coming soon">🇺🇦 UKR</span>
                         <span style="opacity: 0.3;">|</span>
-                        <span data-lang="en">🇬🇧 ENG</span>
+                        <span class="active" data-lang="en">🇬🇧 ENG</span>
                         <span style="opacity: 0.3;">|</span>
-                        <span data-lang="cz">🇨🇿 CZE</span>
+                        <span class="disabled" data-lang="cz" title="Coming soon">🇨🇿 CZE</span>
                     </div>
                 </div>
             </nav>
@@ -1191,15 +1193,6 @@
                 Всі зібрані кошти підуть на виробництво FPV-дронів для України.
             </p>
 
-            <!-- GoOut tickets — centred -->
-            <div class="goout-door-wrap">
-                <div class="btn-wrapper paper-strip" style="display:inline-block; transform: rotate(1deg);">
-                    <button class="enter-btn" onclick="window.open('https://goout.net/en/6k-and-evro661-spring-strahov4ukraine/sznyyiy/', '_blank', 'noopener')">
-                        <div class="paper-bg torn-edges"></div>
-                        <span class="paper-text font-grunge">GoOut Tickets</span>
-                    </button>
-                </div>
-            </div>
 
             <!-- Donation counter -->
             <div class="donation-counter">
@@ -1214,6 +1207,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Sticky GoOut tickets button — visible on door page, hides on entry -->
+    <div id="goout-sticky">
+        <div class="btn-wrapper paper-strip" style="transform: rotate(-1.5deg);">
+            <button class="enter-btn" onclick="window.open('https://goout.net/en/6k-and-evro661-spring-strahov4ukraine/sznyyiy/', '_blank', 'noopener')">
+                <div class="paper-bg torn-edges"></div>
+                <span class="paper-text font-grunge">GoOut Tickets</span>
+            </button>
+        </div>
+    </div>
 
     <div id="white-flash"></div>
 
@@ -1236,11 +1239,11 @@
                 </span>
             </div>
             <div id="inner-lang">
-                <span class="active" data-lang="uk">🇺🇦 UKR</span>
+                <span class="disabled" data-lang="uk" title="Coming soon">🇺🇦 UKR</span>
                 <span class="sep">|</span>
-                <span data-lang="en">🇬🇧 ENG</span>
+                <span class="active" data-lang="en">🇬🇧 ENG</span>
                 <span class="sep">|</span>
-                <span data-lang="cz">🇨🇿 CZE</span>
+                <span class="disabled" data-lang="cz" title="Coming soon">🇨🇿 CZE</span>
             </div>
         </nav>
 
@@ -1641,6 +1644,8 @@
                 
                 document.getElementById('hero-ui').style.opacity = '0';
                 document.getElementById('hero-ui').style.transition = 'opacity 1s ease';
+                const goSticky = document.getElementById('goout-sticky');
+                if (goSticky) goSticky.classList.add('hidden');
 
                 targetAngleLeft = Math.PI * 0.75;
                 targetAngleRight = -Math.PI * 0.75;
@@ -1696,6 +1701,7 @@
         // Обработчик для языков
         document.querySelectorAll('#door-lang span[data-lang], #inner-lang span[data-lang]').forEach(el => {
             el.addEventListener('click', () => {
+                if (el.classList.contains('disabled')) return; // unavailable
                 if (window.setLang) window.setLang(el.dataset.lang);
                 else el.classList.add('active');
             });
@@ -1887,7 +1893,7 @@
         syncLogoSources();
 
         // ── Language state (UK default) ───────────────────────────────────────
-        let currentLang = 'uk';
+        let currentLang = 'en';
         function getBio(a) {
             if (!a.bio) return '';
             if (typeof a.bio === 'string') return a.bio;
@@ -1917,22 +1923,8 @@
             if (!col) return;
 
             const insertIllustrationAfter = 9; // после Block 1 (по аналогии с jsx-моком)
-            let prevBlock = null;
 
             artists.forEach((a, idx) => {
-                // Block divider (with arrow) before first artist of a new block (except block 1)
-                if (prevBlock !== null && a.block !== prevBlock) {
-                    const div = document.createElement('div');
-                    div.className = 'block-divider';
-                    div.dataset.targetBlock = a.block;
-                    div.innerHTML = `<button class="block-arrow" type="button" aria-label="Go to Block ${a.block}">
-                        <span class="arrow-label">Block ${a.block}</span>
-                        <span class="arrow-icon">↓</span>
-                    </button>`;
-                    col.appendChild(div);
-                }
-                prevBlock = a.block;
-
                 const wrap = document.createElement('div');
                 wrap.className = 'strip-wrap';
                 wrap.dataset.artistId = a.id;
@@ -2121,6 +2113,8 @@
                     scrollContent.style.display = '';
                     renderingActive = true;
                     isDiving = false;
+                    const goSticky = document.getElementById('goout-sticky');
+                    if (goSticky) goSticky.classList.remove('hidden');
                     targetAngleLeft = 0;
                     targetAngleRight = 0;
                     targetVoidLight = 8;
@@ -2229,24 +2223,7 @@
             });
         })();
 
-        // ── Block-arrow scroll-to-block ───────────────────────────────────────
-        (function initBlockArrows() {
-            const col = document.getElementById('lineup-column');
-            if (!col) return;
-            col.addEventListener('click', (e) => {
-                const arrow = e.target.closest('.block-arrow');
-                if (!arrow) return;
-                const divider = arrow.closest('.block-divider');
-                if (!divider) return;
-                // Find the FIRST .strip-wrap of the target block (i.e. the one immediately after this divider)
-                const targetBlock = divider.dataset.targetBlock;
-                const firstStrip = divider.nextElementSibling;
-                if (!firstStrip) return;
-                // Scroll so the strip's top sits at the very top of the viewport
-                const y = firstStrip.getBoundingClientRect().top + window.scrollY - 8;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            });
-        })();
+
 
         // ── Football game ─────────────────────────────────────────────────────
         (function initFootballGame() {
