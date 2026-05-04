@@ -389,7 +389,18 @@
             45%  { opacity: 0.35; transform: translate(-50%, -50%) scale(2.2);  filter: blur(4px); }
             100% { opacity: 0;    transform: translate(-50%, -50%) scale(2.8);  filter: blur(8px); }
         }
-
+#sticky-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+#sticky-logo img {
+  height: 44px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+}
         .back-link {
             color: var(--text-main);
             opacity: 0.7;
@@ -703,6 +714,15 @@
             text-decoration: none;
             transition: color 0.3s, transform 0.3s;
         }
+        .ev-social-door {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 28;
+  opacity: 1;
+}
+/* Используем те же стили, что у .ev-social-link */
         .ev-social-link:hover { color: #ffd699; transform: scale(1.12); }
         .ev-social-link svg { width: 17px; height: 17px; fill: currentColor; }
         .ev-social-link span {
@@ -714,134 +734,130 @@
             font-weight: 500;
         }
 
-        /* ── DONATE POSTER — sticky bottom-right ── */
-        #donate-poster {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            width: 200px;
-            height: 200px;
-            z-index: 40;
-            cursor: pointer;
-            text-decoration: none;
-            transform-style: preserve-3d;
-        }
-        .donate-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 6px solid #000;
-            box-shadow: 6px 8px 0 rgba(0,0,0,0.8);
-            transition: transform 0.5s ease-out, border-color 0.5s;
-        }
-        #donate-poster:hover .donate-inner {
-            border-color: transparent;
-            transition: transform 0.1s ease-out, border-color 0.5s;
-        }
-        /* Ukrainian flag bg — slides in on hover */
-        .donate-flag-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, #0057B7 50%, #FFDD00 50%);
-            background-size: 100% 200%;
-            background-position: 0 0;
-            transition: background-position 0.5s ease;
-            z-index: 0;
-        }
-        #donate-poster:hover .donate-flag-bg {
-            background-position: 0 -100%;
-        }
-        /* Noise texture overlay */
-        .donate-noise {
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            opacity: 0.05;
-            z-index: 2;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-        /* Three blocks */
-        .donate-block {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            transition: background-color 0.5s;
-        }
-        .donate-block-1 { background: #000; }
-        .donate-block-2 { background: #fff; }
-        .donate-block-3 { background: #000; }
-        #donate-poster:hover .donate-block-1,
-        #donate-poster:hover .donate-block-2,
-        #donate-poster:hover .donate-block-3 { background: transparent; }
-        .donate-block span {
-            font-family: 'Anton', sans-serif;
-            line-height: 1;
-            text-transform: uppercase;
-            display: block;
-            width: 100%;
-            text-align: center;
-            transition: transform 0.5s ease-out, color 0.5s;
-        }
-        /* FUNDRAISER / UKRAINE — match React proportions on small poster */
-        .donate-block-1 span,
-        .donate-block-3 span {
-            color: #fff;
-            font-size: clamp(1.7rem, 9.5vw, 2.4rem);
-            letter-spacing: -0.005em;
-        }
-        .donate-block-3 span { letter-spacing: 0.08em; }
-        /* FOR — short word, much bigger */
-        .donate-block-2 span {
-            color: #000;
-            font-size: clamp(3.3rem, 16vw, 4.4rem);
-            letter-spacing: 0.02em;
-        }
-        #donate-poster:hover .donate-block-1 span,
-        #donate-poster:hover .donate-block-3 span {
-            color: #fff;
-            transform: scale(1.05);
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-        }
-        #donate-poster:hover .donate-block-2 span {
-            color: #fff;
-            transform: scale(1.10);
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-        /* DONATE cta overlay */
-        .donate-cta {
-            position: absolute;
-            inset: 0;
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.5s 0.1s;
-            pointer-events: none;
-        }
-        #donate-poster:hover .donate-cta { opacity: 1; }
-        .donate-cta span {
-            background: #000;
-            color: #fff;
-            font-family: 'Anton', sans-serif;
-            font-size: clamp(1.6rem, 7vw, 2.1rem);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            padding: 10px 22px;
-            border: 2px solid rgba(255,255,255,0.18);
-            backdrop-filter: blur(4px);
-            transform: translateY(16px);
-            transition: transform 0.5s ease-out;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-        #donate-poster:hover .donate-cta span { transform: translateY(0); }
+/* Обновлённые стили донат-постера (точное соответствие React) */
+#donate-poster {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 200px;
+  height: 200px;
+  z-index: 40;
+  cursor: pointer;
+  text-decoration: none;
+  transform-style: preserve-3d;
+}
+.donate-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 6px solid #000;
+  box-shadow: 6px 8px 0 rgba(0,0,0,0.8);
+  transition: transform 0.5s ease-out, border-color 0.5s;
+}
+#donate-poster:hover .donate-inner {
+  border-color: transparent;
+  transition: transform 0.1s ease-out, border-color 0.5s;
+}
+.donate-flag-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #0057B7 50%, #FFDD00 50%);
+  background-size: 100% 200%;
+  background-position: 0 0;
+  opacity: 0;
+  transition: opacity 0.5s ease, background-position 0.5s ease;
+  z-index: 0;
+}
+#donate-poster:hover .donate-flag-bg {
+  opacity: 1;
+  background-position: 0 -100%;
+}
+.donate-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.donate-block {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.5s;
+}
+.donate-block-1, .donate-block-3 { background: #000; }
+.donate-block-2 { background: #fff; }
+#donate-poster:hover .donate-block-1,
+#donate-poster:hover .donate-block-2,
+#donate-poster:hover .donate-block-3 {
+  background: transparent;
+}
+.donate-block span {
+  font-family: 'Anton', sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.5s ease-out, color 0.5s;
+}
+.donate-block-1 span,
+.donate-block-3 span {
+  color: #fff;
+  font-size: clamp(1.7rem, 9.5vw, 2.4rem);
+  letter-spacing: -0.005em;
+}
+.donate-block-3 span { letter-spacing: 0.08em; }
+.donate-block-2 span {
+  color: #000;
+  font-size: clamp(3.3rem, 16vw, 4.4rem);
+  letter-spacing: 0.02em;
+}
+#donate-poster:hover .donate-block-1 span,
+#donate-poster:hover .donate-block-3 span {
+  color: #fff;
+  transform: scale(1.05);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+#donate-poster:hover .donate-block-2 span {
+  color: #fff;
+  transform: scale(1.10);
+  text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.donate-cta {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s 0.1s;
+  pointer-events: none;
+}
+#donate-poster:hover .donate-cta { opacity: 1; }
+.donate-cta span {
+  background: #000;
+  color: #fff;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.6rem, 7vw, 2.1rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 2px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px);
+  transform: translateY(16px);
+  transition: transform 0.5s ease-out;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+#donate-poster:hover .donate-cta span { transform: translateY(0); }
 
         /* ── MUSIC PLAYER ── */
         #music-player {
@@ -1009,7 +1025,7 @@
         }
         .map-wrap iframe {
             display: block;
-            width: min(680px, 90vw);
+            width: 100%;
             height: 300px;
             border: 0;
             pointer-events: none;
@@ -1100,6 +1116,13 @@
         /* ── DOOR PAGE GoOut centered ── */
         .goout-door-wrap { text-align: center; margin-top: 30px; }
 
+        .door-audio-ctrl {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 40;
+}
+
         @media (max-width: 600px) {
             #donate-poster { width: 130px; height: 130px; bottom: 12px; right: 12px; }
             #music-player { width: 100vw; }
@@ -1133,6 +1156,9 @@
     </svg>
 
     <!-- ================= SECTION 1: HERO ================= -->
+    <div id="sticky-logo" title="Back to entrance">
+  <img src="" alt="EVRO661" id="sticky-logo-img">
+</div>
     <section id="hero-wrap">
         <div id="canvas-container"></div>
         <div class="cinematic-layer" id="film-grain"></div>
@@ -1164,6 +1190,10 @@
                     </div>
                 </div>
             </nav>
+            
+<div class="door-audio-ctrl">
+  <button class="ctrl-btn" id="btn-sound-door" title="Toggle sound" aria-label="Toggle sound">🔇</button>
+</div>
 
             <div class="hero-center">
                 <span class="hero-eyebrow">Fundraising event by</span>
@@ -1174,7 +1204,7 @@
                 <div class="btn-wrapper paper-strip" id="enter-btn">
                     <button class="enter-btn">
                         <div class="paper-bg torn-edges"></div>
-                        <span class="paper-text font-grunge">Зайти</span>
+                        <span class="paper-text font-grunge">Enter</span>
                     </button>
                 </div>
             </div>
@@ -1187,11 +1217,10 @@
     <section class="hero-scroll-content" id="hero-scroll-content">
         <div class="content-text">
             <p>
-                Двохденний благодійний івент на стадіоні Страгов (Прага).
-                8–9 травня 2026 — два дні безперервного рейву, експериментальної музики
-                та візуального мистецтва від&nbsp;6000ovecek та EVRO661.
-                Всі зібрані кошти підуть на виробництво FPV-дронів для України.
-            </p>
+May 8–9, 2026, Strahov Stadium (Prague)
+A two-day charity collision of non-stop underground frequencies, experimental audio and visual art organized by 6000ovecek & EVRO661.
+All proceeds fund FPV drones for Ukraine.
+</p>
 
 
             <!-- Donation counter -->
@@ -1223,11 +1252,11 @@
     <!-- ================= SECTION 2: INSIDE SITE ================= -->
     <section id="inside-section">
         <!-- Persistent top nav: small evro661 logo + photo-flash element under it -->
-        <nav id="inner-nav">
-            <div class="inner-logo-wrap" id="inner-logo-wrap" style="cursor:pointer;" title="Back to entrance">
+                    <div class="inner-logo-wrap" id="inner-logo-wrap" style="cursor:pointer;" title="Back to entrance">
                 <img class="inner-logo-img" src="" alt="EVRO661">
                 <div class="photo-flash" id="photo-flash"></div>
             </div>
+        <nav id="inner-nav">
             <div id="fundraising-bar">
                 <span class="fb-label">Fundraising Progress</span>
                 <div class="fb-bar-wrap">
@@ -1250,6 +1279,9 @@
         <!-- INSIDE HERO: full viewport, big logo centered, fades out on scroll -->
         <div id="inside-hero">
             <img id="inside-big-logo" src="" alt="6000ovecek & evro661">
+             <p style="text-align: center; color: #fff; margin-top: 10px; font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 1.2rem;">
+  8.5 — 9.5.2026 &nbsp; | &nbsp; Strahov Stadium, Prague
+</p>
             <div class="inside-scroll-hint" aria-label="scroll down">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -1311,7 +1343,7 @@
 
         <!-- Map section -->
         <div id="map-section">
-            <h3>Strahov Stadium</h3>
+            <<h3>📍 Location — Strahov Stadium</h3>
             <div class="map-wrap" onclick="window.open('https://www.google.com/maps/place/Strahov+Stadium,+Prague', '_blank', 'noopener')" title="Open in Google Maps">
                 <iframe
                     src="https://maps.google.com/maps?q=50.0810,14.3897&z=15&output=embed"
@@ -1689,7 +1721,14 @@
                 }, 2200); 
             }, 300); 
         });
-
+// Клик по логотипу тоже открывает двери
+const mainLogo = document.querySelector('h1.main-title img');
+if (mainLogo) {
+  mainLogo.style.cursor = 'pointer';
+  mainLogo.addEventListener('click', () => {
+    enterBtn.click(); // вызываем тот же обработчик, что у кнопки "Зайти"
+  });
+}
         window.addEventListener('resize', () => {
             if(!renderingActive) return;
             camera.aspect = window.innerWidth / window.innerHeight;
@@ -1747,16 +1786,9 @@
         animate();
 
         // ========================================================
-        // INSIDE SECTION: Лайн-ап, логотипы, фотовспышка
+        // INSIDE SECTION
         // ========================================================
 
-        // ---- Артисты — имена из artists.js (источник правды) ----
-        // Структура такая же как в jsx-моке: имя, био, массив фото, массив видео.
-        // На превью везде по 2 фотки и 1 видео (плейсхолдеры picsum + giphy mp4).
-        // Когда придут реальные ассеты — просто замени imgs/vids на пути вида
-        //   "artists-data/{slug}/photo-1.jpg"
-        //   "artists-data/{slug}/video.mp4"
-        // и подгрузи bio.md содержимое в bio.
 
         const PLACEHOLDER_VIDS = [
             'https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.mp4',
@@ -1989,7 +2021,7 @@
             ).join('');
             const bioText = getBio(a);
             leftPanel.innerHTML = `
-                ${imgsHtml || '<p class="panel-missing">фото скоро</p>'}
+                ${imgsHtml || '<p class="panel-missing">photos coming soon</p>'}
                 <div class="panel-text">
                     <strong>${a.name}</strong>
                     ${bioText ? bioText.replace(/\n/g, '<br>') : ''}
@@ -2001,7 +2033,7 @@
                 <video class="panel-vid" data-idx="${i}" src="${src}" autoplay loop muted playsinline></video>
             `).join('');
             rightPanel.innerHTML = `
-                ${vidsHtml || '<p class="panel-missing">видео будут позже</p>'}
+                ${vidsHtml || '<p class="panel-missing">videos coming soon</p>'}
                 ${bioText ? `<p class="panel-text">${bioText.replace(/\n/g, '<br>')}</p>` : ''}
             `;
             // звук на ховер
@@ -2405,15 +2437,15 @@
     </script>
 
     <!-- Donate poster (sticky bottom-right, always visible) -->
-    <a id="donate-poster" href="https://donio.cz/drony-solidarity-ctyri?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaARkOVJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAac9JGrGySz9-WOv5QHxkTdHhGLoHlc_Wdyamg6nwUgc9gVl4fbKN8cFmwbGpw_aem_SmnPEwNws18n2qD_E0_AiQ" target="_blank" rel="noopener" title="Donate for Ukraine" aria-label="Donate">
-        <div class="donate-inner" id="donate-inner">
-            <div class="donate-flag-bg"></div>
-            <div class="donate-noise"></div>
-            <div class="donate-block donate-block-1"><span>Fundraiser</span></div>
-            <div class="donate-block donate-block-2"><span>For</span></div>
-            <div class="donate-block donate-block-3"><span>Ukraine</span></div>
-            <div class="donate-cta"><span>Donate</span></div>
-        </div>
+<a id="donate-poster" href="https://donio.cz/drony-solidarity-ctyri?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaARkOVJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAac9JGrGySz9-WOv5QHxkTdHhGLoHlc_Wdyamg6nwUgc9gVl4fbKN8cFmwbGpw_aem_SmnPEwNws18n2qD_E0_AiQ" target="_blank" rel="noopener" title="Donate for Ukraine" aria-label="Donate">
+  <div class="donate-inner" id="donate-inner">
+    <div class="donate-noise"></div>
+    <div class="donate-flag-bg"></div>
+    <div class="donate-block donate-block-1"><span>Fundraiser</span></div>
+    <div class="donate-block donate-block-2"><span>For</span></div>
+    <div class="donate-block donate-block-3"><span>Ukraine</span></div>
+    <div class="donate-cta"><span>Donate</span></div>
+  </div>
     </a>
 
     <!-- Music player (SoundCloud popup from bottom) -->
