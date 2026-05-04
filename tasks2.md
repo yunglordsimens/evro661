@@ -147,7 +147,7 @@ No stray `<` character. Possibly a visual rendering quirk or a missing closing t
 ---
 
 **Next Steps for Claude Code:**
-1. Read the current `index-2.html` file thoroughly.
+1. Read the current `index.html` file thoroughly.
 2. For each task above, implement the changes directly in the HTML file (add/remove elements, adjust CSS, tweak JS).
 3. Pay special attention to paths (fonts, images) – ensure they reference the correct relative or absolute paths.
 4. Test mobile responsiveness using browser dev tools after changes.
