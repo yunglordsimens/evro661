@@ -34,6 +34,11 @@
                  url('public/PunkKid.otf') format('opentype');
             font-display: swap;
         }
+        @font-face {
+            font-family: 'HitMePunk-8';
+            src: url('public/HitMePunk-8.ttf') format('truetype');
+            font-display: swap;
+        }
         .font-hit-punk { font-family: 'Hit Me Punk', 'Permanent Marker', 'Rock Salt', cursive; }
         .font-punk-kid { font-family: 'Punk Kid', 'Bowlby One SC', 'Permanent Marker', cursive; }
 
@@ -67,7 +72,7 @@
         /* Punk Kid for GoOut Tickets buttons (door + lineup) */
         #goout-sticky .paper-text,
         .goout-big-wrap .paper-text {
-            font-family: 'Punk Kid', 'Bowlby One SC', 'Permanent Marker', 'Rock Salt', cursive !important;
+            font-family: 'HitMePunk-8', 'Punk Kid', 'Bowlby One SC', 'Permanent Marker', 'Rock Salt', cursive !important;
             letter-spacing: 1px;
         }
 
@@ -109,7 +114,7 @@
             position: relative;
             z-index: 2;
             color: #000000;
-            font-size: 1.2rem;
+            font-size: 1.56rem;
             padding: 12px 35px;
             display: block;
             text-transform: uppercase;
@@ -279,12 +284,12 @@
             pointer-events: none;
         }
         #goout-sticky .paper-text {
-            font-size: 1.3rem;
+            font-size: 1.69rem;
             padding: 12px 36px;
         }
         @media (max-width: 640px) {
             #goout-sticky { bottom: 22px; }
-            #goout-sticky .paper-text { font-size: 1rem; padding: 10px 26px; }
+            #goout-sticky .paper-text { font-size: 1.3rem; padding: 10px 26px; }
         }
 
         @keyframes bounce {
@@ -306,6 +311,7 @@
             max-width: 700px; /* Ограничиваем ширину текста для читаемости */
         }
         .content-text p {
+            font-family: 'Times New Roman', serif;
             font-size: 1.2rem;
             line-height: 1.8;
             color: #bbbbbb;
@@ -525,7 +531,7 @@
             z-index: 2;
             color: #000;
             font-family: 'Rock Salt', cursive;
-            font-size: clamp(0.95rem, 2vw, 1.4rem);
+            font-size: clamp(1.24rem, 2.6vw, 1.82rem);
             padding: 6px 22px;
             text-transform: uppercase;
             white-space: nowrap;
@@ -652,7 +658,7 @@
                 transform: translateX(-50%);
                 margin-top: 12px;
                 color: rgba(255,255,255,0.85);
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Times New Roman', serif;
                 font-size: 0.78rem;
                 line-height: 1.5;
                 width: min(280px, 80vw);
@@ -665,7 +671,7 @@
 
         /* ── EYEBROW ── */
         .hero-eyebrow {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Times New Roman', serif;
             font-size: 0.68rem;
             letter-spacing: 6px;
             text-transform: uppercase;
@@ -678,6 +684,7 @@
         /* ── DONATION COUNTER ── */
         .donation-counter { margin: 40px auto 0; max-width: 440px; text-align: center; }
         .donation-label {
+            font-family: 'Times New Roman', serif;
             font-size: 0.72rem;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -706,7 +713,7 @@
             margin-top: 8px;
             text-align: center;
         }
-        .donation-amount .goal { color: rgba(255,255,255,0.38); font-size: 0.82rem; }
+        .donation-amount .goal { font-family: 'Times New Roman', serif; color: rgba(255,255,255,0.38); font-size: 0.82rem; }
         .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
         /* ── Flip-clock split-flap counter ── */
@@ -1195,6 +1202,24 @@
         }
         .lang-location-btn { cursor: pointer; transition: color 0.2s; }
         .lang-location-btn:hover { color: #ffd699; }
+        .spot-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-family: 'Hit Me Punk', 'Permanent Marker', cursive;
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: default;
+        }
+        .spot-badge-inner { cursor: pointer; transition: color 0.2s; }
+        .spot-badge-inner:hover { color: #ffd699; }
         .inner-lang-block {
             display: flex;
             flex-direction: column;
@@ -1240,7 +1265,7 @@
         }
         #fundraising-bar.visible { opacity: 1; }
         #fundraising-bar .fb-label {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Times New Roman', serif;
             font-size: 0.55rem;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -1338,12 +1363,12 @@
         @media (max-width: 820px) {
             .hero-screen nav { padding: 14px 18px; }
             .hero-screen .logo img { height: 28px; }
-            .hero-eyebrow { font-size: 0.6rem; letter-spacing: 2px; }
+            .hero-eyebrow { font-size: 0.6rem; letter-spacing: 2px; word-break: break-word; overflow-wrap: break-word; }
             .hero-logo-wrap { width: min(85vw, 420px); }
             .hero-logo-wrap .main-title img { width: 100%; height: auto; }
-            .enter-overlay .paper-text { font-size: 1.1rem; padding: 10px 26px; }
+            .enter-overlay .paper-text { font-size: 1.43rem; padding: 10px 26px; }
             #goout-sticky { bottom: 18px; }
-            #goout-sticky .paper-text { font-size: 1rem; padding: 9px 22px; }
+            #goout-sticky .paper-text { font-size: 1.3rem; padding: 9px 22px; }
             .door-audio-ctrl { bottom: 16px !important; left: 16px !important; }
             .ev-social-door { left: 12px; gap: 12px; }
             .ev-social-door .ev-social-link span { font-size: 0.5rem; letter-spacing: 1.5px; }
@@ -1352,24 +1377,27 @@
             .inner-logo-img { height: 28px; }
             #inner-lang { font-size: 0.6rem; gap: 5px; }
             #inside-hero img { width: min(85vw, 480px); height: auto; }
-            #inside-hero p { font-size: 1rem !important; letter-spacing: 1px !important; }
-            .strip-text { font-size: clamp(1.4rem, 8vw, 2.6rem) !important; }
+            #inside-hero .inside-date { font-size: 1.3rem !important; letter-spacing: 1px !important; }
+            #inside-hero .inside-location { font-size: 0.95rem !important; letter-spacing: 1px !important; }
+            .strip-text { font-size: clamp(1.82rem, 10.4vw, 3.38rem) !important; }
             .strip-wrap { padding: 12px 16px !important; }
             .lineup-date { margin-top: 50px; }
             .lineup-date h2 { font-size: clamp(1.6rem, 10vw, 2.6rem); }
             .lineup-date p { font-size: 0.85rem; letter-spacing: 2px; }
+            .lineup-column { max-width: 100%; }
+            .strip-wrap { max-width: 100%; white-space: normal; overflow-wrap: break-word; }
             #map-section { padding: 40px 16px 60px; }
             .map-wrap iframe { height: 280px; }
             .goout-big-wrap { padding: 32px 16px 16px; }
-            .goout-big-wrap .paper-text { font-size: 1.1rem !important; padding: 10px 28px !important; }
+            .goout-big-wrap .paper-text { font-size: 1.43rem !important; padding: 10px 28px !important; }
             .flip-currency { font-size: 1.9rem; }
             .flip-digit { width: 1.4ch; height: 2.1rem; font-size: 1.4rem; }
             .flip-sep { font-size: 1.4rem; }
         }
 
         @media (max-width: 480px) {
-            #goout-sticky .paper-text { font-size: 0.9rem; padding: 8px 18px; }
-            .enter-overlay .paper-text { font-size: 0.95rem; padding: 8px 22px; }
+            #goout-sticky .paper-text { font-size: 1.17rem; padding: 8px 18px; }
+            .enter-overlay .paper-text { font-size: 1.24rem; padding: 8px 22px; }
             #fundraising-bar .fb-label { display: none; }
             #map-jump { padding: 6px 5px; }
             #map-jump .map-pin { font-size: 0.95rem; }
@@ -1436,6 +1464,7 @@
                     </select>
                     <!-- Location badge -->
                     <div class="lang-location" aria-label="Location">📍 Strahov Stadium, Prague</div>
+                    <div class="spot-badge" aria-label="Location">📍 <span>SPOT</span></div>
                 </div>
             </nav>
             
@@ -1546,15 +1575,15 @@ All proceeds fund FPV drones for Ukraine.
                     <option value="cz" disabled>🇨🇿 CZE (soon)</option>
                 </select>
                 <button class="lang-location lang-location-btn" type="button" id="inner-location-btn" aria-label="Jump to map">📍 Strahov Stadium, Prague</button>
+                <div class="spot-badge spot-badge-inner" id="spot-badge-inner" role="button" tabindex="0" aria-label="Jump to map">📍 <span>SPOT</span></div>
             </div>
         </nav>
 
         <!-- INSIDE HERO: full viewport, big logo centered, fades out on scroll -->
         <div id="inside-hero">
             <img id="inside-big-logo" src="" alt="6000ovecek & evro661">
-             <p style="text-align: center; color: #fff; margin-top: 10px; font-family: 'Hit Me Punk','Permanent Marker','Rock Salt',cursive; letter-spacing: 2px; font-size: 1.4rem;">
-  8.5 — 9.5.2026 &nbsp; | &nbsp; Strahov Stadium, Prague
-</p>
+                        <p class="inside-date" style="text-align: center; color: #fff; margin-top: 10px; font-family: 'Hit Me Punk','Permanent Marker','Rock Salt',cursive; letter-spacing: 2px; font-size: 1.82rem;">8.5 — 9.5.2026</p>
+            <p class="inside-location" style="text-align: center; color: rgba(255,255,255,0.75); margin-top: 6px; font-family: 'Hit Me Punk','Permanent Marker','Rock Salt',cursive; letter-spacing: 2px; font-size: 1.3rem;">Strahov Stadium, Prague</p>
         </div>
 
         <!-- Social icons: left side, event page only -->
@@ -1609,7 +1638,7 @@ All proceeds fund FPV drones for Ukraine.
             <div class="btn-wrapper paper-strip" style="display:inline-block; transform: rotate(-1.2deg);">
                 <button class="enter-btn" onclick="window.open('https://goout.net/en/6k-and-evro661-spring-strahov4ukraine/sznyyiy/', '_blank', 'noopener')">
                     <div class="paper-bg torn-edges"></div>
-                    <span class="paper-text font-grunge" style="font-size:1.4rem; padding:14px 44px;">GoOut Tickets</span>
+                    <span class="paper-text font-grunge" style="font-size:1.82rem; padding:14px 44px;">GoOut Tickets</span>
                 </button>
             </div>
         </div>
@@ -2037,6 +2066,13 @@ if (mainLogo) {
         const innerLocBtn = document.getElementById('inner-location-btn');
         if (innerLocBtn) {
             innerLocBtn.addEventListener('click', () => {
+                const t = document.getElementById('map-section');
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+        const spotBadgeInner = document.getElementById('spot-badge-inner');
+        if (spotBadgeInner) {
+            spotBadgeInner.addEventListener('click', () => {
                 const t = document.getElementById('map-section');
                 if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
