@@ -425,25 +425,6 @@
             45%  { opacity: 0.35; transform: translate(-50%, -50%) scale(2.2);  filter: blur(4px); }
             100% { opacity: 0;    transform: translate(-50%, -50%) scale(2.8);  filter: blur(8px); }
         }
-#sticky-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-#sticky-logo.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-#sticky-logo img {
-  height: 44px;
-  width: auto;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
-}
         .back-link {
             color: var(--text-main);
             opacity: 0.7;
@@ -695,7 +676,7 @@
         }
 
         /* ── DONATION COUNTER ── */
-        .donation-counter { margin-top: 40px; max-width: 440px; }
+        .donation-counter { margin: 40px auto 0; max-width: 440px; text-align: center; }
         .donation-label {
             font-size: 0.72rem;
             letter-spacing: 3px;
@@ -707,8 +688,9 @@
             height: 3px;
             background: rgba(255,255,255,0.1);
             border-radius: 2px;
-            margin-bottom: 10px;
+            margin: 0 auto 10px;
             overflow: hidden;
+            max-width: 360px;
         }
         .donation-bar-fill {
             height: 100%;
@@ -1197,6 +1179,31 @@
             z-index: 2;
         }
 
+        /* ── Location badge (under both lang switchers) ── */
+        .lang-location {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            margin-top: 6px;
+            background: none;
+            border: none;
+            padding: 2px 0;
+            cursor: default;
+            white-space: nowrap;
+        }
+        .lang-location-btn { cursor: pointer; transition: color 0.2s; }
+        .lang-location-btn:hover { color: #ffd699; }
+        .inner-lang-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+        /* Hide native select on desktop */
+        .lang-select { display: none; }
+
         /* ── INNER NAV LANG ── */
         #inner-lang {
             display: flex;
@@ -1286,6 +1293,45 @@
             #fb-game-score { bottom: 60px; font-size: 0.75rem; }
             #event-social { display: none; }
             #bottom-left-ctrl { bottom: 14px; left: 14px; }
+
+            /* Mobile lang switcher → native <select>, left-aligned */
+            #door-lang, #inner-lang { display: none !important; }
+            .lang-select {
+                display: inline-block !important;
+                appearance: none;
+                -webkit-appearance: none;
+                background: rgba(8,6,4,0.7);
+                border: 1px solid rgba(255,255,255,0.18);
+                color: #fff;
+                font-family: 'Hit Me Punk', 'Permanent Marker', cursive;
+                font-size: 0.85rem;
+                padding: 4px 22px 4px 8px;
+                border-radius: 4px;
+                cursor: pointer;
+                background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.6) 50%),
+                                  linear-gradient(135deg, rgba(255,255,255,0.6) 50%, transparent 50%);
+                background-position: calc(100% - 12px) 50%, calc(100% - 7px) 50%;
+                background-size: 5px 5px, 5px 5px;
+                background-repeat: no-repeat;
+            }
+            /* Door header: stack social + lang+location, lang on the LEFT */
+            .hero-screen nav {
+                flex-wrap: wrap;
+            }
+            .hero-screen nav > div:nth-child(2) {
+                order: -1;
+                margin-left: 0;
+                margin-right: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 4px;
+            }
+            #door-lang-select { align-self: flex-start; }
+            .lang-location { font-size: 0.55rem; letter-spacing: 1px; }
+            /* Inner-nav: location wraps to second line on mobile */
+            .inner-lang-block { align-items: flex-start; gap: 4px; }
+            #inner-location-btn { font-size: 0.55rem; letter-spacing: 1px; }
         }
 
         /* ── Comprehensive mobile/tablet polish ── */
@@ -1301,8 +1347,6 @@
             .door-audio-ctrl { bottom: 16px !important; left: 16px !important; }
             .ev-social-door { left: 12px; gap: 12px; }
             .ev-social-door .ev-social-link span { font-size: 0.5rem; letter-spacing: 1.5px; }
-            #sticky-logo { top: 14px; left: 14px; }
-            #sticky-logo img { height: 36px; }
             #inner-nav { padding: 14px 18px; }
             #fundraising-bar { width: 60%; }
             .inner-logo-img { height: 28px; }
@@ -1355,9 +1399,6 @@
     </svg>
 
     <!-- ================= SECTION 1: HERO ================= -->
-    <div id="sticky-logo" title="Back to entrance">
-  <img src="" alt="EVRO661" id="sticky-logo-img">
-</div>
     <section id="hero-wrap">
         <div id="canvas-container"></div>
         <div class="cinematic-layer" id="film-grain"></div>
@@ -1379,7 +1420,7 @@
                         </a>
                     </div>
                     
-                    <!-- Переключатель языка -->
+                    <!-- Lang switcher -->
                     <div class="lang-switch" id="door-lang">
                         <span class="disabled" data-lang="uk" title="Coming soon">🇺🇦 UKR</span>
                         <span style="opacity: 0.3;">|</span>
@@ -1387,6 +1428,14 @@
                         <span style="opacity: 0.3;">|</span>
                         <span class="disabled" data-lang="cz" title="Coming soon">🇨🇿 CZE</span>
                     </div>
+                    <!-- Mobile fallback select (shown via CSS @media) -->
+                    <select class="lang-select" id="door-lang-select" aria-label="Language">
+                        <option value="uk" disabled>🇺🇦 UKR (soon)</option>
+                        <option value="en" selected>🇬🇧 ENG</option>
+                        <option value="cz" disabled>🇨🇿 CZE (soon)</option>
+                    </select>
+                    <!-- Location badge -->
+                    <div class="lang-location" aria-label="Location">📍 Strahov Stadium, Prague</div>
                 </div>
             </nav>
             
@@ -1468,12 +1517,11 @@ All proceeds fund FPV drones for Ukraine.
 
     <!-- ================= SECTION 2: INSIDE SITE ================= -->
     <section id="inside-section">
-        <!-- Persistent top nav: small evro661 logo + photo-flash element under it -->
-                    <div class="inner-logo-wrap" id="inner-logo-wrap" style="cursor:pointer;" title="Back to entrance">
+        <nav id="inner-nav">
+            <div class="inner-logo-wrap" id="inner-logo-wrap" style="cursor:pointer;" title="Back to entrance">
                 <img class="inner-logo-img" src="" alt="EVRO661">
                 <div class="photo-flash" id="photo-flash"></div>
             </div>
-        <nav id="inner-nav">
             <div id="fundraising-bar">
                 <span class="fb-label">Fundraising Progress</span>
                 <div class="fb-bar-wrap">
@@ -1484,12 +1532,20 @@ All proceeds fund FPV drones for Ukraine.
                     <span class="fb-goal"> / €10 000</span>
                 </span>
             </div>
-            <div id="inner-lang">
-                <span class="disabled" data-lang="uk" title="Coming soon">🇺🇦 UKR</span>
-                <span class="sep">|</span>
-                <span class="active" data-lang="en">🇬🇧 ENG</span>
-                <span class="sep">|</span>
-                <span class="disabled" data-lang="cz" title="Coming soon">🇨🇿 CZE</span>
+            <div class="inner-lang-block">
+                <div id="inner-lang">
+                    <span class="disabled" data-lang="uk" title="Coming soon">🇺🇦 UKR</span>
+                    <span class="sep">|</span>
+                    <span class="active" data-lang="en">🇬🇧 ENG</span>
+                    <span class="sep">|</span>
+                    <span class="disabled" data-lang="cz" title="Coming soon">🇨🇿 CZE</span>
+                </div>
+                <select class="lang-select" id="inner-lang-select" aria-label="Language">
+                    <option value="uk" disabled>🇺🇦 UKR (soon)</option>
+                    <option value="en" selected>🇬🇧 ENG</option>
+                    <option value="cz" disabled>🇨🇿 CZE (soon)</option>
+                </select>
+                <button class="lang-location lang-location-btn" type="button" id="inner-location-btn" aria-label="Jump to map">📍 Strahov Stadium, Prague</button>
             </div>
         </nav>
 
@@ -1896,8 +1952,6 @@ All proceeds fund FPV drones for Ukraine.
                 document.getElementById('hero-ui').style.transition = 'opacity 1s ease';
                 const goSticky = document.getElementById('goout-sticky');
                 if (goSticky) goSticky.classList.add('hidden');
-                const sLogo = document.getElementById('sticky-logo');
-                if (sLogo) sLogo.classList.add('visible');
 
                 targetAngleLeft = Math.PI * 0.75;
                 targetAngleRight = -Math.PI * 0.75;
@@ -1965,6 +2019,28 @@ if (mainLogo) {
                 else el.classList.add('active');
             });
         });
+        // Mobile select handlers — sync both selects + setLang
+        ['door-lang-select', 'inner-lang-select'].forEach(id => {
+            const sel = document.getElementById(id);
+            if (!sel) return;
+            sel.addEventListener('change', () => {
+                const v = sel.value;
+                if (window.setLang) window.setLang(v);
+                // Sync the other select
+                ['door-lang-select', 'inner-lang-select'].forEach(o => {
+                    const other = document.getElementById(o);
+                    if (other && other !== sel) other.value = v;
+                });
+            });
+        });
+        // Inside-nav location button → jump to map
+        const innerLocBtn = document.getElementById('inner-location-btn');
+        if (innerLocBtn) {
+            innerLocBtn.addEventListener('click', () => {
+                const t = document.getElementById('map-section');
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
 
         // ========================================================
         // ЦИКЛ АНИМАЦИИ
@@ -2140,8 +2216,6 @@ if (mainLogo) {
             }
             if (heroSmall) {
                 document.querySelectorAll('.inner-logo-img').forEach(img => img.src = heroSmall.src);
-                const sticky = document.getElementById('sticky-logo-img');
-                if (sticky) sticky.src = heroSmall.src;
             }
         }
         syncLogoSources();
@@ -2346,20 +2420,7 @@ if (mainLogo) {
         window.addEventListener('scroll', onInsideScroll, { passive: true });
 
         // ── Logo click → back to door ─────────────────────────────────────────
-        // Sticky-logo click → same back-to-door behaviour as inner-logo-wrap
-        const stickyLogoEl = document.getElementById('sticky-logo');
-        if (stickyLogoEl) {
-            stickyLogoEl.addEventListener('click', (ev) => {
-                // Only react when we're already inside (inside-section visible)
-                const insideSection = document.getElementById('inside-section');
-                if (!insideSection || insideSection.style.display === 'none' || insideSection.style.display === '') return;
-                ev.stopPropagation();
-                const inner = document.getElementById('inner-logo-wrap');
-                if (inner) inner.click();
-            });
-        }
-
-        const innerLogoWrap = document.getElementById('inner-logo-wrap');
+const innerLogoWrap = document.getElementById('inner-logo-wrap');
         if (innerLogoWrap) {
             innerLogoWrap.addEventListener('click', () => {
                 const insideSection = document.getElementById('inside-section');
@@ -2384,8 +2445,6 @@ if (mainLogo) {
                     isDiving = false;
                     const goSticky = document.getElementById('goout-sticky');
                     if (goSticky) goSticky.classList.remove('hidden');
-                    const sLogo = document.getElementById('sticky-logo');
-                    if (sLogo) sLogo.classList.remove('visible');
                     targetAngleLeft = 0;
                     targetAngleRight = 0;
                     targetVoidLight = 8;
