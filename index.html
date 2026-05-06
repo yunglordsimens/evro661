@@ -739,8 +739,6 @@ All proceeds fund FPV drones for Ukraine.
                     <option value="en" selected>🇬🇧 ENG</option>
                     <option value="cz" disabled>🇨🇿 CZE (soon)</option>
                 </select>
-                <button class="lang-location lang-location-btn" type="button" id="inner-location-btn" aria-label="Jump to map">📍 Strahov Stadium, Prague</button>
-                <div class="spot-badge spot-badge-inner" id="spot-badge-inner" role="button" tabindex="0" aria-label="Jump to map">📍 <span>SPOT</span></div>
             </div>
         </nav>
 
@@ -748,6 +746,7 @@ All proceeds fund FPV drones for Ukraine.
         <div id="inside-hero">
             <img id="inside-big-logo" src="" alt="6000ovecek & evro661">
                         <p class="inside-date" style="text-align: center; color: #fff; margin-top: 18px; font-family: 'Hit Me Punk','Permanent Marker','Rock Salt',cursive; letter-spacing: 4px; font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1;">8.5 — 9.5.2026</p>
+                        <p class="inside-location-big" id="inner-location-btn" role="button" tabindex="0" style="text-align: right; color: #fff; margin-top: 6px; font-family: 'Hit Me Punk','Permanent Marker','Rock Salt',cursive; letter-spacing: 3px; font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; cursor: pointer;">📍 Strahov Stadium, Prague</p>
         </div>
 
         <!-- Social icons: left side, event page only -->
@@ -803,7 +802,7 @@ All proceeds fund FPV drones for Ukraine.
         <!-- Map section -->
         <div id="map-section">
             <h3 style="font-size:1.2rem;">Strahov Stadium, Prague</h3>
-            <p style="text-align:center; color:#ccc; font-size:0.9rem; margin-top:-10px; margin-bottom:20px;">📍 Location — Strahov Stadium, Prague</p>
+            <p style="text-align:center; color:#ccc; font-size:1.2rem; margin-top:-10px; margin-bottom:20px;">📍</p>
             <div class="map-wrap" onclick="window.open('https://www.google.com/maps/place/Strahov+Stadium,+Prague', '_blank', 'noopener')" title="Open in Google Maps">
                 <iframe
                     src="https://maps.google.com/maps?q=50.0810,14.3897&z=15&output=embed"
@@ -1223,13 +1222,6 @@ if (mainLogo) {
         const innerLocBtn = document.getElementById('inner-location-btn');
         if (innerLocBtn) {
             innerLocBtn.addEventListener('click', () => {
-                const t = document.getElementById('map-section');
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        }
-        const spotBadgeInner = document.getElementById('spot-badge-inner');
-        if (spotBadgeInner) {
-            spotBadgeInner.addEventListener('click', () => {
                 const t = document.getElementById('map-section');
                 if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
