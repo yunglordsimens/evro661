@@ -308,8 +308,20 @@
         .panel-img, .panel-vid { width: 100%; height: auto; object-fit: cover; display: block; box-shadow: 4px 4px 0 rgba(0,0,0,0.7); cursor: crosshair; transition: transform 0.25s ease; background: #111; }
         .panel-img:hover, .panel-vid:hover { transform: scale(1.02); }
         .panel-vid { aspect-ratio: 16/9; max-height: 200px; }
-        .panel-text { color: rgba(255,255,255,0.85); font-size: 0.85rem; line-height: 1.55; margin-top: 8px; text-transform: uppercase; }
-        .panel-text strong { display: block; font-family: 'Cinzel', serif; font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; color: #fff; }
+        .panel-text {
+            font-family: 'Times New Roman', serif;
+            color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6;
+            margin-top: 8px; text-transform: none;
+            text-shadow: 2px 3px 0 rgba(0,0,0,0.85);
+        }
+        .panel-text strong {
+            display: block;
+            font-family: 'Times New Roman', serif;
+            font-weight: bold; font-size: 1.1rem;
+            letter-spacing: normal; text-transform: none;
+            margin-bottom: 6px; color: #fff;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.9);
+        }
 
         /* DONATE POSTER */
         #donate-poster {
