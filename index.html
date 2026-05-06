@@ -749,7 +749,7 @@ All proceeds fund FPV drones for Ukraine.
                 </span>
             </div>
             -->
-            <div class="inner-lang-block">
+            <div class="inner-lang-block" style="align-items:flex-end;">
                 <div id="inner-lang" class="lang-switch">
                     <span class="disabled" data-lang="uk" title="Coming soon">🇺🇦 UKR</span>
                     <span style="opacity:0.3;">|</span>
@@ -801,6 +801,12 @@ All proceeds fund FPV drones for Ukraine.
             <!-- Side panels -->
             <aside id="left-panel" class="side-panel side-panel-left" aria-hidden="true"></aside>
             <aside id="right-panel" class="side-panel side-panel-right" aria-hidden="true"></aside>
+            <!-- Mobile artist bottom sheet -->
+            <div id="mobile-panel-overlay"></div>
+            <div id="mobile-panel" role="dialog" aria-modal="true" aria-label="Artist info">
+                <button id="mobile-panel-close" aria-label="Close">✕</button>
+                <div id="mobile-panel-content"></div>
+            </div>
 
             <!-- Central column with paper strips + illustration -->
             <div class="lineup-column" id="lineup-column">
@@ -1580,9 +1586,59 @@ if (mainLogo) {
             if (!wrap) return;
             e.stopPropagation();
             const id = +wrap.dataset.artistId;
+
+            // Mobile: bottom sheet instead of side panels
+            if (window.innerWidth <= 820) {
+                const a = artists.find(x => x.id === id);
+                if (a) openMobilePanel(a);
+                return;
+            }
+
             lockedArtistId = (lockedArtistId === id) ? null : id;
             renderPanels();
         });
+
+        // ── Mobile bottom sheet ──────────────────────────────────
+        function openMobilePanel(a) {
+            const panel = document.getElementById('mobile-panel');
+            const overlay = document.getElementById('mobile-panel-overlay');
+            const content = document.getElementById('mobile-panel-content');
+            if (!panel || !content) return;
+
+            const bioText = getBio(a);
+            const imgHtml = (a.imgs || []).slice(0, 1).map(src =>
+                `<img class="mp-img" src="${src}" alt="${a.name}" loading="lazy">`
+            ).join('');
+            const vidHtml = (a.vids || []).slice(0, 1).map(src =>
+                `<video class="mp-vid" src="${src}" controls preload="none" playsinline></video>`
+            ).join('');
+
+            content.innerHTML = `
+                <div class="mp-name">${a.name}</div>
+                ${imgHtml}
+                ${bioText ? `<div class="mp-bio">${bioText.replace(/\n/g,'<br>')}</div>` : ''}
+                ${vidHtml}
+            `;
+
+            panel.classList.add('open');
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobilePanel() {
+            const panel = document.getElementById('mobile-panel');
+            const overlay = document.getElementById('mobile-panel-overlay');
+            if (panel) {
+                const vid = panel.querySelector('video');
+                if (vid) { vid.pause(); vid.src = ''; }
+                panel.classList.remove('open');
+            }
+            if (overlay) overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('mobile-panel-close').addEventListener('click', closeMobilePanel);
+        document.getElementById('mobile-panel-overlay').addEventListener('click', closeMobilePanel);
 
         // ---- Inside-hero fade + photo flash on scroll ----
         let flashTriggered = false;
