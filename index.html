@@ -1841,7 +1841,6 @@ const innerLogoWrap = document.getElementById('inner-logo-wrap');
         };
 
         // Patch the enter button to also show social/controls
-        const origEnterClick = enterBtn._clickHandler;
         enterBtn.addEventListener('click', () => {
             setTimeout(origShowInside, 2800);
         });
