@@ -675,25 +675,22 @@ All proceeds fund FPV drones for Ukraine.
 </p>
 
 
-            <!-- Donation counter -->
+            <!-- FUNDRAISING COUNTER — закомментировано (раскомментировать чтобы вернуть)
             <div class="donation-counter flip-style">
                 <div class="donation-label">Fundraising progress</div>
-
-                <!-- Flip-clock counter (€XXXX) — split-flap board look -->
                 <div class="flip-counter" aria-hidden="true">
                     <span class="flip-currency">€</span>
                     <span class="flip-digits" id="donation-flip-digits"></span>
                 </div>
                 <span id="donation-raised" class="visually-hidden">€0</span>
-
                 <div class="donation-bar-wrap">
                     <div class="donation-bar-fill" id="donation-bar" style="width:0%"></div>
                 </div>
-
                 <div class="donation-amount">
                     <span class="goal">of €10 000 goal</span>
                 </div>
             </div>
+            -->
         </div>
     </section>
 
@@ -1678,7 +1675,8 @@ const innerLogoWrap = document.getElementById('inner-logo-wrap');
             setTimeout(origShowInside, 2800);
         });
 
-        // ── Donation counter animation ────────────────────────────────────────
+        /* FUNDRAISING JS — закомментировано (раскомментировать чтобы вернуть)
+        // ── Donation counter animation
         (function initDonation() {
             const bar = document.getElementById('donation-bar');
             const raised = document.getElementById('donation-raised');
@@ -1746,6 +1744,7 @@ const innerLogoWrap = document.getElementById('inner-logo-wrap');
             }
             setTimeout(tick, 5000);
         })();
+        END FUNDRAISING JS */
 
         // ── Donate poster: 3D tilt ────────────────────────────────────────────
         (function initDonate() {

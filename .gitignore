@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Raw / source files (не нужны на Vercel)
+raw/
+src/
+
+# Backup HTML files
+index--.html
+
+# Node (если понадобится)
+node_modules/
