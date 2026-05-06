@@ -475,11 +475,11 @@
         }
         #event-social.visible { opacity: 1; pointer-events: auto; }
         .ev-social-link {
-            display: flex; flex-direction: column; align-items: center; gap: 7px;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
             color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s, transform 0.3s;
         }
         .ev-social-link:hover { color: #ffd699; }
-        .ev-social-link svg { width: 17px; height: 17px; fill: currentColor; }
+        .ev-social-link svg { width: 22px; height: 22px; fill: currentColor; }
 .ev-social-link span {
     font-family: 'Times New Roman', serif;
     font-size: 1.7rem;
@@ -508,7 +508,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 7px;
+    gap: 10px;
     color: rgba(255,255,255,0.45);
     text-decoration: none;
     transition: color 0.3s;
@@ -517,8 +517,8 @@
     color: #ffd699;
 }
 .ev-social-link svg {
-    width: 17px;
-    height: 17px;
+    width: 22px;
+    height: 22px;
     fill: currentColor;
 }
 /* Стили для текста под иконками Instagram – как у .hero-eyebrow */
@@ -564,11 +564,13 @@
         @media (max-width: 820px) {
             .hero-screen nav { flex-wrap: wrap; padding: 14px 18px; }
             .hero-screen .logo img { height: 28px; }
-            #global-logo { top: 14px; left: 18px; }
+            #global-logo { top: 14px; right: 18px; left: auto; }
             #global-logo img { height: 28px; }
             .menu-right { flex-direction: column; align-items: flex-end; gap: 6px; }
             .lang-switch { font-size: 0.65rem; }
-            .lang-select { display: inline-block; }
+            .lang-select { display: inline-block; position: absolute; right: 18px; top: 14px; }
+            .ev-social-door, #event-social { left: 8px; }
+            #goout-sticky .paper-text { font-size: 1.2rem; padding: 8px 20px; }
             .lang-switch { display: none; }
             .spot-badge-hero { font-size: 1.3rem; width: auto; max-width: 80vw; }
             .donation-counter .flip-currency { font-size: 1.8rem; }
@@ -614,6 +616,12 @@
     text-transform: uppercase;
     margin-bottom: 8px;
     display: block;
+}
+@media (max-width: 820px) {
+    .hero-eyebrow { font-size: 1.2rem; }
+}
+@media (max-width: 600px) {
+    .hero-eyebrow { font-size: 1.0rem; }
 }
 
 /* Instagram hover: span colour follows parent */
