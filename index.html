@@ -802,18 +802,26 @@
 }
 
 /* Mobile date in inner-nav */
-.mobile-date {
+.mobile-nav-date {
     display: none; /* hidden on desktop */
-    font-family: 'Hit Me Punk', 'Permanent Marker', 'Rock Salt', cursive;
-    font-size: clamp(1rem, 4vw, 1.4rem);
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 0.04em;
-    text-align: right;
-    margin-top: 4px;
-    white-space: nowrap;
 }
 @media (max-width: 820px) {
-    .mobile-date { display: block; }
+    .mobile-nav-date {
+        display: block;
+        font-family: 'Hit Me Punk', 'Permanent Marker', 'Rock Salt', cursive;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        color: #fff;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        text-transform: uppercase;
+        text-align: right;
+        margin-top: 8px;
+        opacity: 1;
+    }
+    /* Desktop date inside hero — hide on mobile to avoid duplication */
+    .inside-date.desktop-nav-date {
+        display: none;
+    }
 }
     </style>
 
@@ -981,7 +989,7 @@ All proceeds fund FPV drones for Ukraine.
                     <option value="cz" disabled>🇨🇿 CZE (soon)</option>
                 </select>
                 <button type="button" id="inner-location-btn" aria-label="Jump to map" style="background:none;border:none;padding:0;cursor:pointer;font-family:'Hit Me Punk','Permanent Marker','Rock Salt',cursive;font-size:clamp(2rem,5vw,3.5rem);color:#fff;letter-spacing:-0.03em;line-height:1;text-transform:uppercase;text-align:right;margin-top:6px;white-space:nowrap;">📍 Strahov Stadium, Prague</button>
-                <span class="mobile-date">8.5 — 9.5.2026</span>
+                <span class="mobile-nav-date">8.5 — 9.5.2026</span>
             </div>
         </nav>
 
