@@ -572,6 +572,24 @@
             .ev-social-door, #event-social { left: 8px; gap: 12px; }
             #event-social .ev-social-link span { font-size: 1.8rem; }
             #goout-sticky .paper-text { font-size: 1.2rem; padding: 8px 20px; }
+            /* GoOut Tickets inside section – fixed bottom-left like #goout-sticky */
+            .goout-big-wrap {
+                position: fixed;
+                bottom: 28px;
+                left: 18px;
+                z-index: 40;
+                transform: none;
+                width: auto;
+                filter: drop-shadow(3px 4px 0px rgba(0,0,0,0.9));
+            }
+            .goout-big-wrap .btn-wrapper {
+                display: inline-block;
+                transform: rotate(-1.2deg);
+            }
+            .goout-big-wrap .paper-text {
+                font-size: 1.56rem;
+                padding: 8px 22px;
+            }
             .lang-switch { display: none; }
             .spot-badge-hero { font-size: 1.3rem; width: auto; max-width: 80vw; }
             .donation-counter .flip-currency { font-size: 1.8rem; }
