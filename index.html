@@ -42,9 +42,11 @@
             background-color: #050403;
             color: var(--text-main);
             font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
             scroll-behavior: smooth;
         }
+        /* overflow only on body: it then applies to the window, so window scroll
+           events / scrollTo keep working (on both html+body, body became the scroller) */
+        body { overflow-x: hidden; }
 
         .paper-strip { filter: drop-shadow(3px 4px 0px rgba(0,0,0,0.9)); }
         .torn-edges { filter: url(#torn-edges-filter); }
@@ -825,6 +827,11 @@
 
     /* Sound / football buttons sit above the GoOut button */
     #bottom-left-ctrl { bottom: 92px; left: 18px; }
+
+    /* Header: solid enough that scrolling strips don't show through the text */
+    #inner-nav { background: linear-gradient(to bottom, rgba(5,4,3,0.96) 75%, rgba(5,4,3,0)); padding-bottom: 22px; }
+    /* Room at the end so the map can scroll clear of the fixed GoOut / poster */
+    #inside-section { padding-bottom: 150px; }
 
     /* Artist sheet is open → poster must not cover it (different stacking contexts) */
     body:has(#mobile-panel.open) #donate-poster { display: none; }
